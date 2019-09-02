@@ -71,5 +71,4 @@ public class AnimeController {
 		// use a redirect to prevent duplicate submissions
 		return "redirect:/anime/list";
 	}
-	
 }

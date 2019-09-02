@@ -48,13 +48,14 @@
 
 			<img th:src="@{/images/189678.svg}" class="close-form-button clickable" onclick="toggleForm()"></img>
 			<label class="new-anime-label">Title</label>
-			<input required class="new-anime-input" th:field="*{title}" type="text" placeholder="Title">
+			<input id="animeTitleInput" required class="new-anime-input" th:field="*{title}" type="text" placeholder="Title">
+			<button onclick="executeQuery()" class="btn btn-primary">Search</button>
 
 			<label class="new-anime-label">Year</label>
-			<input required class="new-anime-input" th:field="*{premiereYear}" type="text" placeholder="Year">
+			<input id="premiereYearInput" required class="new-anime-input" th:field="*{premiereYear}" type="text" placeholder="Year">
 
 			<label class="new-anime-label">Season Aired</label>
-			<select class="select-anime" th:field="*{premiereSeason}">
+			<select id="premiereSeasonInput" class="select-anime" th:field="*{premiereSeason}">
 				<option value="Summer">Summer</option>
 				<option value="Fall">Fall</option>
 				<option value="Winter">Winter</option>
@@ -86,7 +87,7 @@
 			}
 		}
 	</script>
-
+	<script th:src="@{/js/anime/anilistAPI.js}"></script>
 </body>
 
 </html>
