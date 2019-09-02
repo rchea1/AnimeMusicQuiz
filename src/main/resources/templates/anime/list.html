@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" th:href="@{/css/libraries/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
+
+	<script th:src="@{/js/libraries/bootstrap.min.js}"></script>
+	<script th:src="@{/js/libraries/jquery-3.4.1.js}"></script>
+	<title>Anime List</title>
+</head>
+
+<body>
+	<header class="anime-list-header">
+		<div class="anime-list">
+			<a class="btn btn-primary" style="margin-bottom: 1rem" onclick="toggleForm()" role="button">Add</a>
+			<table class="theme-table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Title</th>
+						<th>Season</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${anime.empty}">
+						<td colspan="2">No anime available</td>
+					</tr>
+					<tr th:each="a : ${anime}">
+						<td class="clickable" th:onclick="|redirectToAnime(${a.id})|"><span th:text="${a.id}">ID</span>
+						</td>
+						<td class="clickable" th:onclick="|redirectToAnime(${a.id})|"><span
+								th:text="${a.title}">Title</span></td>
+						<td class="clickable" th:onclick="|redirectToAnime(${a.id})|"><span
+								th:text="|${a.premiereSeason} ${a.premiereYear} ">Season</span></td>
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/}">Home</a>
+		</div>
+	</header>
+
+	<div class="new-anime-container">
+		<form id="anime-form" action="#" th:action="@{/anime/save}" th:object="${animeModel}" method="POST">
+
+			<img th:src="@{/images/189678.svg}" class="close-form-button clickable" onclick="toggleForm()"></img>
+			<label class="new-anime-label">Title</label>
+			<input required class="new-anime-input" th:field="*{title}" type="text" placeholder="Title">
+
+			<label class="new-anime-label">Year</label>
+			<input required class="new-anime-input" th:field="*{premiereYear}" type="text" placeholder="Year">
+
+			<label class="new-anime-label">Season Aired</label>
+			<select class="select-anime" th:field="*{premiereSeason}">
+				<option value="Summer">Summer</option>
+				<option value="Fall">Fall</option>
+				<option value="Winter">Winter</option>
+				<option value="Spring">Spring</option>
+			</select>
+
+			<button type="submit" class="anime-input-submit">Submit</button>
+		</form>
+	</div>
+
+	<script>
+		function toggleForm() {
+			if ($(".new-anime-container").css("display") === "none") {
+				$("#anime-form").trigger("reset");
+				$(".new-anime-container").show();
+				$(".anime-list").addClass("anime-list-fade");
+				$(".anime-list-header").addClass("anime-list-fade");
+			}
+			else {
+				$(".new-anime-container").hide();
+				$(".anime-list").removeClass("anime-list-fade");
+				$(".anime-list-header").removeClass("anime-list-fade");
+			}
+		}
+
+		function redirectToAnime(animeId) {
+			if ($(".new-anime-container").css("display") === "none") {
+				window.location.href = "/anime/" + animeId;
+			}
+		}
+	</script>
+
+</body>
+
+</html>

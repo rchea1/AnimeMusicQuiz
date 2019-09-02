@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" th:href="@{css/main.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{/css/libraries/bootstrap.min.css}" type="text/css">
+
+	<script th:src="@{/js/libraries/bootstrap.min.js}"></script>
+	<script th:src="@{/js/libraries/jquery-3.4.1.js}"></script>
+
+	<title>Anime Music Quiz Home</title>
+</head>
+
+<body>
+	<header class="home-header">
+		<div class="home-main-text">
+			<h1>
+				<span class="span-text-main">Anime Music Quiz</span>
+				<span class="span-text-sub">Do you know your anime music?</span>
+			</h1>
+
+			<div>
+				<a class="butn btn-blue" th:href="@{/quiz/start/}">Quiz yourself</a>
+			</div>
+		</div>
+
+
+
+		<div>
+			<a class="butn btn-grey" th:href="@{/anime/list/}">Anime List</a>
+		</div>
+
+		<div>
+			<a class="butn btn-grey" th:href="@{/themes/list/}">Themes List</a>
+		</div>
+
+
+	</header>
+
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" th:href="@{/css/libraries/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">
+
+	<script th:src="@{/js/libraries/bootstrap.min.js}"></script>
+	<script th:src="@{/js/libraries/jquery-3.4.1.js}"></script>
+	<title>Themes List</title>
+</head>
+
+<body>
+	<header class="theme-list-header">
+		<div class="theme-list">
+			<a style="margin-bottom: 1rem" class="btn btn-primary" onclick="toggleForm()">Add</a>
+
+			<table class="theme-table">
+				<thead>
+					<tr>
+						<th>Artist</th> 
+						<th>Title</th>
+						<th>OP/ED</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${themes.empty}">
+						<td colspan="2">No themes available</td>
+					</tr>
+					<tr th:each="theme : ${themes}">
+						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="${theme.artist}">Artist</span></td>
+						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="${theme.title}">Title</span></td>
+						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="|${theme.themeType} ${theme.themeNumber}|">OP/ED</span></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<a th:href="@{/}">Home</a>
+		</div>
+	</header>
+
+	<div class="new-theme-container">
+		<form id="theme-form" action="#" th:action="@{/themes/save}" th:object="${theme}" method="POST">
+
+			<img th:src="@{/images/189678.svg}" class="close-form-button clickable" onclick="toggleForm()"></img>
+			<label class="new-theme-label">Song Title</label>
+			<input required class="new-theme-input" th:field="*{title}" type="text" placeholder="Song Title">
+
+			<label class="new-theme-label">Artist</label>
+			<input required class="new-theme-input" th:field="*{artist}" type="text" placeholder="Artist">
+
+			<label class="new-theme-label">Theme number</label>
+			<input required class="new-theme-input" th:field="*{themeNumber}" type="text" placeholder="Theme number">
+
+			<label class="new-theme-label">Video URL</label>
+			<input required class="new-theme-input" th:field="*{url}" type="text" placeholder="Video URL">
+
+			<label class="new-theme-label">Anime ID</label>
+			<input required class="new-theme-input" th:field="*{anime.id}" type="text" placeholder="Anime ID">
+
+			<div class="radio-container">
+				<label class="radio-label-theme">
+					<input type="radio" class="new-theme-input-radio" th:field="*{themeType}" value="OP">Opening
+				</label>
+
+				<label class="radio-label-theme">
+					<input type="radio" class="new-theme-input-radio" th:field="*{themeType}" value="ED">Ending
+				</label>
+			</div>
+
+			<button type="submit" class="anime-input-submit">Submit</button>
+		</form>
+	</div>
+
+	<script>
+		function toggleForm() {
+			if ($(".new-theme-container").css("display") === "none") {
+				$("#theme-form").trigger("reset");
+				$(".new-theme-container").show();
+				$(".theme-list").addClass("theme-list-fade");
+				$(".theme-list-header").addClass("theme-list-fade");
+			}
+			else {
+				$(".new-theme-container").hide();
+				$(".theme-list").removeClass("theme-list-fade");
+				$(".theme-list-header").removeClass("theme-list-fade");
+			}
+		}
+
+		function redirectToTheme(themeId) {
+			if ($(".new-theme-container").css("display") === "none") {
+				window.location.href = "/themes/" + themeId;
+			}
+		}
+	</script>
+</body>
+
+</html>

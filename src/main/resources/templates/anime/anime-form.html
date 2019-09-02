@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xlmns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" th:href="@{/css/libraries/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/main.css}" type="text/css">	
+
+<script th:src="@{/js/libraries/bootstrap.min.js}"></script>	
+<script th:src="@{/js/libraries/jquery-3.4.1.js}"></script>
+
+<title>Anime form</title>
+</head>
+
+<body>
+	<div class="container">
+		<form action="#" th:action="@{/anime/save}" th:object="${anime}"
+			method="POST">
+			
+			<input type="hidden" th:field="*{id}">
+
+			<label for="title">Title</label> 
+			<input required id="title" type="text"
+				th:field="*{title}" class="form-control mb-4 col-4"
+				placeholder="Title">
+
+			<label for="inputSeason">Season</label> 
+			<select required th:field="*{premiereSeason}" id="inputSeason" class="form-control mb-4 col-4">
+				<option value="Summer">Summer</option>
+				<option value="Fall">Fall</option>
+				<option value="Winter">Winter</option>
+				<option value="Spring">Spring</option>
+			</select> 
+			
+			<label required for="premiereYear">Year</label> <input id="premiereYear"
+				type="text" th:field="*{premiereYear}"
+				class="form-control mb-4 col-4" placeholder="Year">
+				
+			<button type="submit" class="btn btn-primary">Update</button>
+		</form>
+
+		<hr>
+		<a th:href="@{/anime/list}">Back to Anime List</a>
+
+	</div>
+
+</body>
+</html>
