@@ -4,10 +4,11 @@ This will be an open source web application where users can test how well they k
 ## Current Features
 These are the features that have been implemented:
 * Basic CRUD functionality for adding/updating animes and themes
+* AniList implementation to quickly add anime to the database (skills: GraphQL, http requests)
 
 ## Currently Working On
 For the site, I am currently working on:
-* AniList implementation to quickly add themes (skills: GraphQL, http requests)
+* User authentication
 * Styling the quiz page
 * Brainstorming where to handle game logic (basic structure in JavaScript currently)
 
