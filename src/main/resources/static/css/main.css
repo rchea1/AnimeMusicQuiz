@@ -348,11 +348,8 @@ input[type="radio"] {
 	background-color: rgb(182, 35, 96);
 }
 
-.anime-item {
-	background-color: white;
-}
-.anime-item:nth-child(odd)  {
-	background-color: rgb(192, 102, 140);
+.anime-update-label {
+	color: white;
 }
 
 select{
@@ -363,4 +360,11 @@ select{
 .clickable {
 	cursor: pointer;
 	user-select: none;
+}
+
+#anime-update-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-20%, -60%);
 }

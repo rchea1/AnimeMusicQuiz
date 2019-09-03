@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+	<div th:replace="fragments/header :: header"></div>
 	<div class="bg-video" th:object="${theme}">
 		<video class="bg-video-content" autoplay loop type="video/webm" th:src="*{url}"></video>
 	</div>
@@ -61,18 +61,11 @@
 				</select>
 			</div>
 
-
-
 			<button type="submit" class="btn btn-primary">Update</button>
 
 			<input id="animeId" type="hidden" th:field="*{anime.id}">
 		</form>
 	</div>
-
-	<a class="return-link" style="color: white" th:href="@{/themes/list}">Back to Themes List</a>
-	<script>
-
-	</script>
 </body>
 
 </html>

@@ -24,6 +24,7 @@
 					<tr>
 						<th>Artist</th> 
 						<th>Title</th>
+						<th>Series</th>
 						<th>OP/ED</th>
 					</tr>
 				</thead>
@@ -34,12 +35,11 @@
 					<tr th:each="theme : ${themes}">
 						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="${theme.artist}">Artist</span></td>
 						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="${theme.title}">Title</span></td>
+						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="${theme.anime.title}">Series Title</span></td>
 						<td class="clickable" th:onclick="|redirectToTheme(${theme.id})|"><span th:text="|${theme.themeType} ${theme.themeNumber}|">OP/ED</span></td>
 					</tr>
 				</tbody>
 			</table>
-
-			<a th:href="@{/}">Home</a>
 		</div>
 	</header>
 

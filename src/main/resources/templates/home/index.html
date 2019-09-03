@@ -15,16 +15,18 @@
 </head>
 
 <body>
-	<div th:replace="fragments/header :: header"></div>
+	<header class="home-header">
+		<div th:replace="fragments/header :: header"></div>
 
-	<div class="home-main-text">
-		<h1>
-			<span class="span-text-main">Anime Music Quiz</span>
-			<span class="span-text-sub">Do you know your anime music?</span>
-		</h1>
+		<div class="home-main-text">
+			<h1>
+				<span class="span-text-main">Anime Music Quiz</span>
+				<span class="span-text-sub">Do you know your anime music?</span>
+			</h1>
 
-		<a class="butn btn-blue" th:href="@{/quiz/start/}">Quiz yourself</a>
-	</div>
+			<a class="butn btn-blue" th:href="@{/quiz/start/}">Quiz yourself</a>
+		</div>
+	</header>
 </body>
 
 </html>
