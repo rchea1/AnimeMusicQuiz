@@ -1,4 +1,4 @@
-# Anime Music Quiz
+# Zettai
 This will be an open source web application where users can test how well they know their anime themes.
 
 ## Current Features
